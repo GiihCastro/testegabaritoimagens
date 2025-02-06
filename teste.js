@@ -143,60 +143,55 @@ if (originalQuestionText.length > 440) {
     });
 }
 
-popupQuestion.addEventListener('click', (e) => {
-    if (e.target === popupQuestion || e.target === closePopupQuestion) {
-        popupQuestion.style.display = 'none'; 
-    }
-});
-
-closePopupQuestion.addEventListener('click', () => {
-    popupQuestion.style.display = 'none';
-});
-
-// Função da imagem do gabarito
-
-const popupLarge = document.getElementById('popup-large-image');
-const openPopupButton = document.getElementById('detailed-response');
-const closePopupButton = document.getElementById('close-popup');
-
-openPopupButton.addEventListener('click', (e) => {
-    popupLarge.style.display = 'flex';
-});
-
-closePopupButton.addEventListener('click', () => {
-    popupLarge.style.display = 'none';
-});
-
 // Função para aumentar itens
 
-document.addEventListener('DOMContentLoaded', () =>{
-const answers = document.querySelectorAll('.answer')
-const modal = document.getElementById('modal');
-const modalText = document.getElementById('modal-text');
+// document.addEventListener('DOMContentLoaded', () =>{
+// const answers = document.querySelectorAll('.answer')
+// const modal = document.getElementById('modal');
+// const modalText = document.getElementById('modal-text');
 
-answers.forEach(answer => {
-    answer.addEventListener('click', () => {
-        console.log('Div clicada!'); 
-
+// answers.forEach(answer => {
+//     answer.addEventListener('click', () => {
         
-        const paragraph = answer.querySelector('p').textContent;
-        console.log('Texto capturado do parágrafo:', paragraph); 
+//         const paragraph = answer.querySelector('p').textContent;
 
-        modalText.textContent = paragraph;
-        modal.style.display = 'flex';
-        console.log('Modal exibido com texto:', paragraph);
-    });
+//         modalText.textContent = paragraph;
+//         modal.style.display = 'flex';
+//     });
+// });
+
+
+// window.addEventListener('click', event => {
+//     if (event.target === modal) {
+//         modal.style.display = 'none';
+//     }
+// });
+// });
+
+const popupLarge = document.getElementById('popup-large-image');
+const openPopupLargeButton = document.getElementById('detailed-response'); // Botão dentro do popup-gabarito
+const closePopupLargeButton = document.getElementById('close-popup-large'); // Botão de fechar do popup-large
+
+// Função para abrir o popup-large
+openPopupLargeButton.addEventListener('click', (e) => {
+    e.preventDefault(); // Evita comportamentos padrão (como navegação em links)
+    console.log('Pop up abriu')
+    popupLarge.style.display = 'flex'; // Exibe o popup-large
 });
 
+// Função para fechar o popup-large
+closePopupLargeButton.addEventListener('click', () => {
+    popupLarge.style.display = 'none'; // Oculta o popup-large
+    console.log('Pop up fehcou')
+});
 
-window.addEventListener('click', event => {
-    if (event.target === modal) {
-        console.log('Clicou fora do modal, fechando...'); 
-        modal.style.display = 'none';
+// Fechar o popup-large ao clicar fora do conteúdo
+popupLarge.addEventListener('click', (e) => {
+    if (e.target === popupLarge) {
+        popupLarge.style.display = 'none'; // Oculta o popup-large
+        console.log('Pop up fehcou')
     }
 });
-});
-
 
 
 
